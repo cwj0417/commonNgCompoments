@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'/>
+	<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src='./lib.js'></script>
+</head>
+<body ng-app="app" ng-controller="app">
+	<selectgroup config="./config.js" ng-model='model'/>
+</body>
+</html>
+<script type="text/javascript">
+	angular.module('app',['selectgroup'])
+	.controller('app', function($scope) {
+		$scope.$watch('model', function(n) {
+			if(n) {
+				console.log(n);
+			}
+		})
+	})
+</script>

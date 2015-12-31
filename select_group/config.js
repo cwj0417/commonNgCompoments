@@ -1,0 +1,40 @@
+[{
+	"parent":0,
+	"field":"action",
+	"content":[{
+		"item":"去游戏",
+		"value":"toGame"
+	},{
+		"item":"大师赛",
+		"value":"toMaster"
+	},{
+		"item":"无动作",
+		"value":"noAct"
+	}]
+},{
+	"parent":"action",
+	"when":"toGame",
+	"content":"./room.php",
+	"field":"room",
+	"item":"name",
+	"value":"room"
+},{
+	"parent":"action",
+	"when":"toMaster",
+	"content":[{
+		"item":"房间一",
+		"value":"room1"
+		},{
+			"item":"房间而",
+			"value":"room2"
+			}],
+	"field":"master"
+},{
+	"parent":"master",
+	"when":"room1",
+	"field":"test",
+	"content":[{
+		"item":"哈哈",
+		"value":"sdfa"
+		}]
+	}]
