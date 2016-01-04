@@ -1,11 +1,11 @@
 angular.module('selectgroup',[])
-.directive('selectgroup', function($http, $q) {
+.directive('selectgroup', function($http, $q, $timeout) {
 	return {
 		restrict:'E',
 		require:'?^ngModel',
 		scope:{},
 		template:"<div></div>",
-		link:function(scope, ele, attr, ngModelCtrl) {
+		link:function(scope, ele, attr, ngModel) {
 			var config, ztatuz = {};
 			var wrap = $(ele[0]);
 			function render(ztatuz) {
@@ -21,7 +21,10 @@ angular.module('selectgroup',[])
 						break;
 					}
 				}
-				if(!cell_cfg) return false;
+				if(!cell_cfg) {
+					cal();
+					return false;
+				}
 				if(cell_cfg.content instanceof Array) {
 					render_cfg = cell_cfg.content;
 					defer.resolve();
@@ -44,10 +47,11 @@ angular.module('selectgroup',[])
 							$('<option value="'+render_cfg[i][value]+'">'+render_cfg[i][item]+'</option>').appendTo(select);
 						}
 					}
-					select.on('change', cal)
+					select.on('change', function() {
+						cal();
+					})
 					select.appendTo(wrap);
 					appendselect(cell_cfg.field, ztatuz);
-					cal();
 				})
 			}
 			function cal() {
@@ -55,14 +59,14 @@ angular.module('selectgroup',[])
 				var obj = {};
 				for(var i = 0;i < selects.length ;i ++) {
 					obj[$(selects[i]).attr('name')] = $(selects[i]).val();
+					if($(selects[i]).attr('name') == name && $(selects[i]).val() == value) {
+						break;
+					}
 				}
-				console.log(obj,ztatuz);
-				console.log(JSON.stringify(obj) != JSON.stringify(ztatuz))
+				ngModel.$setViewValue(obj);
 				if(JSON.stringify(obj) != JSON.stringify(ztatuz)) {
-					setTimeout(function(){
-						render(ztatuz);
-						ztatuz = obj;
-					}, 5000)
+					render(obj);
+					ztatuz = obj;
 				}
 			}
 			$http.get(attr.config)
@@ -70,6 +74,11 @@ angular.module('selectgroup',[])
 				config = data;
 				render(ztatuz);
 			})
+			ngModel.$render = function() {
+				if(ngModel.$viewValue) {
+					render(ngModel.$viewValue);
+				}
+			}
 		}
 	}
 })
