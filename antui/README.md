@@ -15,7 +15,7 @@
 
 ###select框
 #####这个是应该用正则匹配的, 以后用的时候再改
-```
+```js
 <ant-Select multiple ant-options='list' ant-field='code,value' ng-model='testselect'></ant-Select>
 ```
 + multiple:可选，多选模式
@@ -26,12 +26,12 @@
 
 ###全局提示
 ####调用service的方法
-`antAlert.success('成功信息',2000)`
-`antAlert.info('提示信息',2000)`
-`antAlert.error('错误信息',2000)`
+```jsantAlert.success('成功信息',2000)```
+```jsantAlert.info('提示信息',2000)```
+```jsantAlert.error('错误信息',2000)```
 
-`var handle = antAlert.loading('加载信息')`
+```jsvar handle = antAlert.loading('加载信息')```
 返回句柄调用解除提示:
-`handle()`
+```jshandle()```
 
 ***
