@@ -3,11 +3,36 @@
 <head>
 	<title></title>
 	<script src="http://cdn.bootcss.com/angular.js/1.3.8/angular.js"></script>
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-	<script src="./antd-0.9.0.min.js"></script>
+	<script src="http://cdn.bootcss.com/react/0.13.3/react.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="./antd-0.9.0.min.css">
+	<script src="./lib.js"></script>
+	<script src="./antd-0.9.0.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
-<body>
-
+<body ng-app="app" ng-controller="app">
+	<div class='div'>
+		select alert type:<ant-Select ant-options='alert_options' ant-field='code,value' ng-model='alert_type'></ant-Select>
+	</div>
 </body>
 </html>
+<script>
+	angular.module('app',['antDirective'])
+	.controller('app', function($scope, antAlert) {
+		$scope.alert_options = [{value:'success',code:'success'},{value:'info',code:'info'},{value:'error',code:'error'},{value:'loading',code:'loading'}];
+		$scope.$watch('alert_type', function(v) {
+			if(v) {
+				var hd = antAlert[v](v);
+				if(v == 'loading') {
+					var interval = prompt('多久消失', 1000);
+					interval = interval || 1000;
+					setTimeout(function(){
+						hd();
+					}, interval)
+				}
+			}
+		})
+	})
+</script>
+<style>
+	.div{width:100px;}
+</style>

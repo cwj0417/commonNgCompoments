@@ -6,9 +6,14 @@
 ***
 
 ##依赖
-+ angular1.x , 当前使用1.3.8
-+ ant 的js 和css
-+ ?jquery 2.0.0
++ ~angular1.3.8
++ ~react 0.13.3
++ ant 的js 和css 0.9.x
++ ?~jquery 2.0.0
 
 ***
 
+###select框
+```js
+<ant-Select multiple ant-options='list' ant-field='code,value' ng-model='testselect'></ant-Select>
+```
