@@ -26,12 +26,22 @@
 
 ###全局提示
 ####调用service的方法
-```jsantAlert.success('成功信息',2000)```
-```jsantAlert.info('提示信息',2000)```
-```jsantAlert.error('错误信息',2000)```
+```js
+antAlert.success('成功信息',2000)
+```
+```js
+antAlert.info('提示信息',2000)
+```
+```js
+antAlert.error('错误信息',2000)
+```
 
-```jsvar handle = antAlert.loading('加载信息')```
+```js
+var handle = antAlert.loading('加载信息')
+```
 返回句柄调用解除提示:
-```jshandle()```
+```js
+handle()
+```
 
 ***
