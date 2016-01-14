@@ -15,7 +15,7 @@
 
 ###select框
 #####这个是应该用正则匹配的, 以后用的时候再改
-```js
+```html
 <ant-Select multiple ant-options='list' ant-field='code,value' ng-model='testselect'></ant-Select>
 ```
 + multiple:可选，多选模式
