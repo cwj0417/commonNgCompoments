@@ -4,7 +4,6 @@
 [ant的github](https://github.com/ant-design/ant-design)
 
 ***
-
 ##依赖
 + ~angular1.3.8
 + ~react 0.13.3
@@ -12,7 +11,6 @@
 + ?~jquery 2.0.0
 
 ***
-
 ###select框
 #####这个是应该用正则匹配的, 以后用的时候再改
 ```js
@@ -23,7 +21,6 @@
 + ng-model:此处双向绑定有问题，当外部数据模型改变并没有重新绘制select默认值，需要研究怎么销毁或者重新绘制
 
 ***
-
 ###全局提示
 ####调用service的方法
 ```js
@@ -45,3 +42,22 @@ handle()
 ```
 
 ***
+###input : Date
+
+```js
+<ant-datepicker format='yyyy/MM/dd' value='2014/1/1' ng-model='dateModel'></ant-datepicker>
+```
+format:日期格式
+value:默认值
+ng-model:与scope绑定
+
+***
+###input : checkbox
+```js
+<ant-switch ng-model='checkvalue'></ant-switch>
+```
+ng-model:问题和select一样，待解决
+
+***
+### table 
+待续

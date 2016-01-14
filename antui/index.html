@@ -10,8 +10,18 @@
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body ng-app="app" ng-controller="app">
-	<div class='div'>
-		select alert type:<ant-Select ant-options='alert_options' ant-field='code,value' ng-model='alert_type'></ant-Select>
+	<div style='margin:200px auto;'>
+		<div class='div'>
+			select alert type:<ant-Select ant-options='alert_options' ant-field='code,value' ng-model='alert_type'></ant-Select>
+		</div>
+		<div class="div">
+				{{date}}
+			<ant-datepicker format='yyyy/MM/dd' value='2014/1/1' ng-model='date'></ant-datepicker>
+		</div>
+		<div class="div">
+				{{switch}}
+			<ant-switch ng-model='switch'></ant-switch>
+		</div>
 	</div>
 </body>
 </html>
