@@ -6,9 +6,9 @@
 ***
 
 ##依赖
-1.angular1.x , 当前使用1.3.8
-2.ant 的js 和css
-3.?jquery 2.0.0
++ angular1.x , 当前使用1.3.8
++ ant 的js 和css
++ ?jquery 2.0.0
 
 ***
 
