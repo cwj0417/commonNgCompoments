@@ -7,9 +7,9 @@ angular.module('filesdrag', [])
                 fn: '&fdFn'
             },
             link: function(scope, ele, attr) {
-                var input = angular.element('<input type="file" onchange="exec()"/>')[0];
-                // console.log(scope)
+                var input = angular.element('<input type="file"/>')[0];
                 var drag = ele[0];
+                $(drag).append(input)
                 drag.addEventListener('dragenter', function(e) {
                     // this.style.background = 'gray';
                 }, false)
@@ -35,11 +35,12 @@ angular.module('filesdrag', [])
                 drag.addEventListener("dblclick", function(e) {
                     input.click();
                 })
-                exec = function() {
+                input.addEventListener('change', function() {
+                    console.log(input);
                     scope.files = input.files;
                     scope.$apply();
                     scope.fn && scope.fn();
-                }
+                })
             }
         }
     })
