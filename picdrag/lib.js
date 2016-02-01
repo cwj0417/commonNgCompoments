@@ -9,7 +9,6 @@ angular.module('filesdrag', [])
             link: function(scope, ele, attr) {
                 var input = angular.element('<input type="file"/>')[0];
                 var drag = ele[0];
-                $(drag).append(input)
                 drag.addEventListener('dragenter', function(e) {
                     // this.style.background = 'gray';
                 }, false)

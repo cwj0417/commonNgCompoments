@@ -54,17 +54,24 @@ angular.module('antDirective',[])
 				for (var i = 0 ; i < scope.antOptions.length ; i ++) {
 				  children.push(React.createElement(Option, {key:scope.antOptions[i][code]}, scope.antOptions[i][value]));
 				}
+				console.log(ngModelCtrl.$viewValue)
 				React.render(React.createElement(Select,{style:{width:'100%'},multiple:attr.multiple == undefined ? false : true,onChange:changeHandle,defaultValue:ngModelCtrl.$viewValue} ,children), ele.find('div')[0]);
 			}
 			scope.$watch(function(){
 				return scope.antOptions;
 			},function(){
-				render();
+				if(ngModelCtrl.$viewValue) {
+					$timeout(function(){
+						render();
+					})
+				}
 			},true)
 			ngModelCtrl.$render = function(){
-				$timeout(function(){
-					render();
-				})
+				if(ngModelCtrl.$viewValue) {
+					$timeout(function(){
+						render();
+					})
+				}
 			}
 		}
 	}
