@@ -2,6 +2,7 @@ angular.module('antDirective',[])
 .factory('antAlert',function(){
 	// info,error,success , timeout
 	// loading -> var hide = antAlert.laoding('...'); hide;
+	// ant ver 0.9.x
 	return antd.message;
 })
 .directive('antDatepicker',function(){
